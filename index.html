@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhiqiang (Eddy) Ji, Ph.D. - Applied Scientist & ML Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1E3A8A;
+            --bright-green: #22C55E;
+            --coral-pink: #F472B6;
+            --light-bg: #FAFAFA;
+            --white: #FFFFFF;
+            --text-dark: #1F2937;
+            --text-gray: #6B7280;
+            --border-light: #E5E7EB;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bright-green), var(--coral-pink));
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-cta {
+            background: var(--primary-blue);
+            color: var(--white) !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--bright-green);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            padding-top: 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-subtitle {
+            color: var(--bright-green);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .hero-degree {
+            color: var(--coral-pink);
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-bg);
+            color: var(--primary-blue);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon.linkedin:hover { background: #0077B5; color: white; }
+        .social-icon.github:hover { background: #333; color: white; }
+        .social-icon.portfolio:hover { background: var(--bright-green); color: white; }
+        .social-icon.email:hover { background: var(--coral-pink); color: white; }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(30, 58, 138, 0.2);
+            border: 6px solid var(--white);
+            position: relative;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .avatar-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 120px;
+            height: 120px;
+            background: 
+                radial-gradient(circle, var(--coral-pink) 2px, transparent 2px),
+                radial-gradient(circle, var(--coral-pink) 2px, transparent 2px);
+            background-size: 12px 12px;
+            background-position: 0 0, 6px 6px;
+            opacity: 0.4;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--bright-green), var(--coral-pink));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* About */
+        #about {
+            background: var(--light-bg);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .about-content strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .highlight-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--bright-green), var(--coral-pink));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.5rem 0.25rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--bright-green), var(--coral-pink));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 45%;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-blue);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--light-bg);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -60px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -60px;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-company {
+            color: var(--bright-green);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .timeline-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Skills */
+        #skills {
+            background: var(--light-bg);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category-icon {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .skill-category:nth-child(1) .skill-category-icon { background: var(--bright-green); }
+        .skill-category:nth-child(2) .skill-category-icon { background: var(--coral-pink); }
+        .skill-category:nth-child(3) .skill-category-icon { background: var(--primary-blue); }
+        .skill-category:nth-child(4) .skill-category-icon { background: var(--bright-green); }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--light-bg);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .education-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--bright-green);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card:nth-child(2) { border-top-color: var(--coral-pink); }
+        .education-card:nth-child(3) { border-top-color: var(--primary-blue); }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: 
+                radial-gradient(circle, var(--primary-blue) 2px, transparent 2px),
+                radial-gradient(circle, var(--primary-blue) 2px, transparent 2px);
+            background-size: 16px 16px;
+            background-position: 0 0, 8px 8px;
+            opacity: 0.03;
+            border-radius: 50%;
+        }
+
+        .education-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .education-degree {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: var(--text-gray);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-date {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-honors {
+            color: var(--bright-green);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Projects */
+        #projects {
+            background: var(--light-bg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--bright-green), var(--coral-pink));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            background: var(--light-bg);
+            color: var(--primary-blue);
+            padding: 0.35rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Contact */
+        #contact {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1E40AF 100%);
+            color: var(--white);
+        }
+
+        #contact .section-title {
+            color: var(--white);
+        }
+
+        #contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--bright-green);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            #hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 6rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-links {
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-degree {
+                font-size: 1.3rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Eddy Ji</a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Applied Scientist & ML Engineer</div>
+            <h1 class="hero-title">Zhiqiang (Eddy) Ji</h1>
+            <div class="hero-degree">Ph.D., O-1A Visa Holder</div>
+            <p class="hero-tagline">Applied Scientist building reliable AI for high-stakes domains.</p>
+            <div class="hero-links">
+                <a href="https://linkedin.com/in/zhiqiangji117/" target="_blank" class="social-icon linkedin" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/qinip" target="_blank" class="social-icon github" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://datascienceportfol.io/zji" target="_blank" class="social-icon portfolio" title="Portfolio">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                    </svg>
+                </a>
+                <a href="mailto:zj117@georgetown.edu" class="social-icon email" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="avatar-wrapper">
+                <img src="avatar.jpg" alt="Zhiqiang (Eddy) Ji">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Where political science meets machine learning</p>
+        </div>
+        <div class="about-content fade-in-up">
+            <p>
+                I'm a <strong>Ph.D.-trained applied scientist</strong> specializing in <strong>LLM evaluation, hallucination detection, and fine-tuning</strong> for policy and regulatory domains. With a unique background combining <strong>political science</strong> (PhD, Claremont Graduate University) and <strong>data science</strong> (MS, Georgetown University), I bring over <strong>3 years of ML/NLP experience</strong> to high-stakes AI applications.
+            </p>
+            <p style="margin-top: 1.5rem;">
+                As an <span class="highlight-badge">O-1A Visa Holder (Extraordinary Ability)</span>, I've built LLM pipelines for legislative transcription, developed hallucination mitigation systems, and fine-tuned models for automated content generation. I'm passionate about making AI reliable, interpretable, and trustworthy for domains where accuracy isn't optional.
+            </p>
+            <p style="margin-top: 1.5rem; color: var(--text-gray);">
+                📍 Based in Northern Virginia / DC Metro • 🎓 Georgetown, Claremont, Peking University • 🔬 Published researcher in computational social science
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-subtitle">Building AI systems for policy and legislation</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item fade-in-up">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">ML Engineer</h3>
+                    <div class="timeline-company">Statt Inc.</div>
+                    <span class="timeline-date">May 2025 – Jan 2026</span>
+                    <p class="timeline-description">
+                        Engineered context engineering solutions for legislative proceedings. Developed hallucination mitigation systems for long-context LLMs. Fine-tuned Gemini models for automated content generation. Built RAG pipelines for congressional hearing transcription with 95% cost reduction.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-up">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Research Collaborator</h3>
+                    <div class="timeline-company">Virginia General Assembly JCOTS</div>
+                    <span class="timeline-date">Nov 2024</span>
+                    <p class="timeline-description">
+                        Co-authored policy report on social media and youth protection for the Virginia state legislature. Applied computational analysis to legislative data and policy recommendations.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-up">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Research Collaborator</h3>
+                    <div class="timeline-company">Mercatus Center, George Mason University</div>
+                    <span class="timeline-date">Jul 2023 – Sep 2024</span>
+                    <p class="timeline-description">
+                        Led the Policy Change Index – North Korea (PCI-NKO) project. Optimized RoBERTa models for policy change prediction. Developed ML/LLM algorithms for analyzing North Korean state media and predicting policy shifts.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in-up">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">MDI Scholar</h3>
+                    <div class="timeline-company">Georgetown University</div>
+                    <span class="timeline-date">Aug 2023 – May 2024</span>
+                    <p class="timeline-description">
+                        Applied NLP/LLM techniques to political ideology analysis. Implemented RAG systems that reduced computational costs by 95%. Conducted research at the intersection of computational social science and large language models.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <p class="section-subtitle">Tools and technologies I use to build reliable AI systems</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category fade-in-up">
+                <h3 class="skill-category-title">
+                    <span class="skill-category-icon"></span>
+                    LLM & AI
+                </h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">LLM</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">RAG</span>
+                    <span class="skill-tag">Fine-tuning</span>
+                    <span class="skill-tag">LLM Evaluation</span>
+                    <span class="skill-tag">Hallucination Detection</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">Context Engineering</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in-up">
+                <h3 class="skill-category-title">
+                    <span class="skill-category-icon"></span>
+                    Frameworks & Tools
+                </h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">DSPy</span>
+                    <span class="skill-tag">Ragas</span>
+                    <span class="skill-tag">OpenAI API</span>
+                    <span class="skill-tag">Gemini</span>
+                    <span class="skill-tag">HuggingFace</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">scikit-learn</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in-up">
+                <h3 class="skill-category-title">
+                    <span class="skill-category-icon"></span>
+                    Data & Infrastructure
+                </h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">GCP</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in-up">
+                <h3 class="skill-category-title">
+                    <span class="skill-category-icon"></span>
+                    Research Methods
+                </h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Computational Social Science</span>
+                    <span class="skill-tag">Policy Analysis</span>
+                    <span class="skill-tag">Experimental Design</span>
+                    <span class="skill-tag">Statistical Analysis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">Academic foundation in data science and political science</p>
+        </div>
+        <div class="education-grid">
+            <div class="education-card fade-in-up">
+                <h3 class="education-degree">M.S. Data Science for Public Policy</h3>
+                <div class="education-school">Georgetown University</div>
+                <div class="education-date">May 2024</div>
+                <div class="education-honors">🏆 Outstanding Student Award (Top 2%) • Dean's Scholarship</div>
+            </div>
+            <div class="education-card fade-in-up">
+                <h3 class="education-degree">Ph.D. Political Science</h3>
+                <div class="education-school">Claremont Graduate University</div>
+                <div class="education-date">August 2021</div>
+                <div class="education-honors">🏆 Bradley Research Fellowship</div>
+            </div>
+            <div class="education-card fade-in-up">
+                <h3 class="education-degree">B.A. Logic, Minor Political Science</h3>
+                <div class="education-school">Peking University</div>
+                <div class="education-date">2015</div>
+                <div class="education-honors">🏆 Magna Cum Laude</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Applying ML/LLM to policy analysis and legislative AI</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card fade-in-up">
+                <h3 class="project-title">Policy Change Index – North Korea</h3>
+                <p class="project-description">
+                    Developed an ML/LLM algorithm to predict North Korean policy changes by analyzing state media. Optimized RoBERTa models for classification and built custom evaluation frameworks for policy prediction tasks.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">RoBERTa</span>
+                    <span class="tech-badge">NLP</span>
+                    <span class="tech-badge">PyTorch</span>
+                    <span class="tech-badge">Policy Analysis</span>
+                </div>
+            </div>
+            <div class="project-card fade-in-up">
+                <h3 class="project-title">Congressional Hearing Transcription System</h3>
+                <p class="project-description">
+                    Built a long-context LLM pipeline for automated transcription and analysis of congressional hearings. Implemented context engineering techniques to handle multi-hour proceedings with high accuracy and 95% cost reduction via RAG.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">LLM</span>
+                    <span class="tech-badge">RAG</span>
+                    <span class="tech-badge">LangChain</span>
+                    <span class="tech-badge">Gemini</span>
+                </div>
+            </div>
+            <div class="project-card fade-in-up">
+                <h3 class="project-title">LLM Evaluation Framework</h3>
+                <p class="project-description">
+                    Designed and implemented evaluation systems for hallucination detection and citation grounding in regulatory AI applications. Built custom metrics using Ragas and DSPy for high-stakes LLM deployments.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">LLM Eval</span>
+                    <span class="tech-badge">Ragas</span>
+                    <span class="tech-badge">DSPy</span>
+                    <span class="tech-badge">Python</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Interested in collaborating on AI for policy or high-stakes domains? Get in touch.</p>
+        </div>
+        <div class="contact-links fade-in-up">
+            <a href="mailto:zj117@georgetown.edu" class="contact-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                Email Me
+            </a>
+            <a href="https://linkedin.com/in/zhiqiangji117/" target="_blank" class="contact-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                LinkedIn
+            </a>
+            <a href="https://github.com/qinip" target="_blank" class="contact-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Zhiqiang (Eddy) Ji, Ph.D. | Built with passion for reliable AI</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in-up elements
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 70;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
