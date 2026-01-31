@@ -558,6 +558,95 @@
             background: var(--light-bg);
         }
 
+        /* Writing Section */
+        #writing {
+            background: var(--white);
+        }
+
+        .writing-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-light);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .writing-card {
+                flex-direction: row;
+                align-items: stretch;
+            }
+            .writing-image {
+                flex: 0 0 40%;
+                min-height: 250px;
+            }
+            .writing-content {
+                flex: 1;
+                padding: 2.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+
+        .writing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .writing-image {
+            background-color: var(--light-bg);
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+        }
+
+        .writing-content {
+            padding: 2rem;
+        }
+
+        .writing-meta {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .writing-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .writing-summary {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--bright-green);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .read-more:hover {
+            gap: 0.8rem;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -802,6 +891,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#writing">Writing</a></li>
                 <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
         </div>
@@ -1042,6 +1132,30 @@
                         Policy Brief (Mercatus Center)
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Writing Section -->
+    <section id="writing">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">Writing & Reflections</h2>
+            <p class="section-subtitle">I write about AI, political science research, education, and the philosophy of technology.</p>
+        </div>
+        <div class="writing-card fade-in-up">
+            <div class="writing-image" style="background-image: url('article-thumb-1.png');"></div>
+            <div class="writing-content">
+                <div class="writing-meta">Jan 30, 2026 • 8 min read • Medium</div>
+                <h3 class="writing-title">The Real Upgrade: What Building a Website with AI Taught Me About My Own Limits</h3>
+                <p class="writing-summary">
+                    A year ago, I landed my dream job. Last week, that chapter came to an abrupt end. Instead of panicking, I built an AI workflow to manage the job search process—and ended up learning something unexpected about the gap between "vague idea" and "deployed product."
+                </p>
+                <a href="https://medium.com/@eddyji/the-real-upgrade-what-building-a-website-with-ai-taught-me-about-my-own-limits-fe71da9efce7" target="_blank" class="read-more">
+                    Read on Medium
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
